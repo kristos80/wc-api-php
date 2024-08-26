@@ -113,7 +113,7 @@ class Client
         return $this->http->request($endpoint, 'OPTIONS', [], []);
     }
 
-    public function id()
+    public function getId()
     {
         return $this->id;
     }
