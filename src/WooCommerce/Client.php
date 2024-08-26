@@ -31,6 +31,11 @@ class Client
     public $http;
 
     /**
+     * @var string $id
+     */
+    private $id;
+
+    /**
      * Initialize client.
      *
      * @param string $url            Store URL.
@@ -41,6 +46,7 @@ class Client
     public function __construct($url, $consumerKey, $consumerSecret, $options = [])
     {
         $this->http = new HttpClient($url, $consumerKey, $consumerSecret, $options);
+        $this->id = md5($url);
     }
 
     /**
@@ -105,5 +111,10 @@ class Client
     public function options($endpoint)
     {
         return $this->http->request($endpoint, 'OPTIONS', [], []);
+    }
+
+    public function id()
+    {
+        return $this->id;
     }
 }
